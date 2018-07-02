@@ -1,0 +1,37 @@
+        class Ninja {
+            constructor(name){
+                this.name = name;
+                this.health = 100;
+                this.speed = 3;
+                this.strength = 3;
+            }
+            sayName(){
+                sole.log(this.name);
+            };
+            showStats(){
+                console.log("Name:", this.name);
+                console.log("Health:", this.health);
+                console.log("Speed:", speed);
+                console.log("Strength:", strength);
+            };
+            drinkSake(){
+                this.health += 10;
+                console.log("Current health:", this.health);
+            };
+            punch(other_ninja){
+                if (other_ninja.constructor === Ninja){
+                    other_ninja.health -= 5;
+                    console.log(other_ninja.name + " was punched by " + this.name +" and lost 5 Health!");
+                } else {
+                    console.log("I can only punch ninjas.");
+                }
+            };
+            kick(other_ninja){
+                if (other_ninja.constructor === Ninja){
+                    other_ninja.health -= other_ninja.strength * 15;
+                    console.log(other_ninja.name + " was kicked by " + this.name +" and lost " + other_ninja.strength*15 + " Health!");
+                } else {
+                    console.log("I can only kick ninjas.");
+                }
+            };
+        }
