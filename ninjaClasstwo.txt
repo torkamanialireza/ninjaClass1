@@ -1,0 +1,36 @@
+function Ninja(name){
+        this.name=name;
+        this.health=100;
+        var speed = 3;
+        var strength = 3;
+        
+        this.sayName = function(){
+        console.log(this.name);
+        };
+        this.showStats = function(){
+        console.log("Name:", this.name);
+        console.log("Health:", this.health);
+        console.log("Speed:", speed);
+        console.log("Strength:", strength);
+        };
+        this.drinkSake = function(){
+        this.health += 10;
+        console.log("Current health:", this.health);
+        };
+        this.punch = function(other_ninja){
+        if (other_ninja.constructor === Ninja){
+            other_ninja.health -= 5;
+            console.log(other_ninja.name + " was punched by " + this.name +" and lost 5 Health!");
+        } else {
+            console.log("I can only punch ninjas.");
+        }
+        };
+        this.kick = function(other_ninja){
+        if (other_ninja === Ninja){
+            other_ninja.health -= strength * 15;
+            console.log(other_ninja.name + " was kicked by " + this.name +" and lost " + strength*15 + " Health!");
+        } else {
+            console.log("I can only kick ninjas.");
+        }
+        };
+    }
