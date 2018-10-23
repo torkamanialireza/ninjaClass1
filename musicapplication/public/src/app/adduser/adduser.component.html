@@ -1,0 +1,93 @@
+<!-- {{req.session.email}} -->
+<!-- <nav class="aliheader" role="navigation">
+    <ul clss="right hide-on-med-and-down">
+        <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+        <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+    </ul>
+  </nav> -->
+
+  <!-- <nav class="lime" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">
+        <img width="100" src="assets/uploads/images/springlogo-300x255.png" alt="">
+
+      </a>
+        <ul class="right hide-on-med-and-down hide">
+          <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="/favorites">Musics</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="main/admin">admin</a></li>
+          <li><a *ngIf="loggedUser" (click)="logout()">Sign out </a></li>
+        </ul>
+        <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+      </div>
+    </nav>
+    <ul id="nav-mobile" class="side-nav">
+        <li><a href="#"><i class="material-icons">home</i></a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Musics</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Artists</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a *ngIf="loggedUser" (click)="logout()">Sign out </a></li>
+    
+      </ul>
+       -->
+
+       <app-navi></app-navi>
+<div class="row grey lighten-4"> 
+    
+    <p *ngFor="let e of errorsValidation">
+        {{e}}
+    </p>
+    <div class="col l12 yellow hide" id="validation">
+    <p *ngFor="let e of errorsValidation">
+      {{e}}
+    </p>
+    <i (click)="resetKon()" class="material-icons">cancel</i>
+    </div> 
+ 
+    <div class="col s12 m6 l6 grey lighten-2">
+        result:{{errorsValidation}}
+      <h5>USER REGISTER</h5>
+      <form enctype="multipart/form-data" (submit)="onSubmit()">  
+    
+      <p><label style="width:100%; display: inline-block; color:white; font-family: 'Rubik', sans-serif; " > First Name : </label><input type="text" class="white" name="newUser.firstName" [(ngModel)]="newUser.firstName"></p>
+      <p> <label style="width:100%; display: inline-block; color:white;" > Last Name : </label><input type="text" class="white" name="newUser.lastName" [(ngModel)]="newUser.lastName"></p>
+      <p> <label style="width:100%; display: inline-block; color:white;" > email : </label><input type="text" class="white" name="newUser.email" [(ngModel)]="newUser.email"></p>
+      <p> <label style="width:100%; display: inline-block; color:white;" > Password: </label><input type="password" class="white" name="newUser.password" [(ngModel)]="newUser.password"></p>
+      <p> <label style="width:100%; display: inline-block; color:white;" > Confirm Password : </label><input type="password" class="white" name="newUser.confirmPassword" [(ngModel)]="newUser.confirmPassword"></p>
+      <!-- <p> Artist Cover Photo : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+      <p> Music Cover Photo : <input type="file"  name="musicsCover" (change)="onFileSelectedmusicsCover($event)"></p>  
+      <p> Videos Cover Photo : <input type="file"  name="videosCover" (change)="onFileSelectedvideosCover($event)"></p>     -->
+      <input type="submit" value="Save Changes">
+      <!-- <button [routerLink]="['main']">Cancel</button> -->
+      <a href="/main/users"> Cancel</a>
+      </form>
+      
+    </div>
+    
+    <div class="col s12 m6 l6 lime accent-2">
+      
+      <h5>Login</h5>
+      <form enctype="multipart/form-data" (submit)="loginUser()">    
+        <p>
+          <input type="text" class="white" name="logUser.email" [(ngModel)]="logUser.email">
+        </p>
+        <p>
+          <input type="text" class="white" name="logUser.password" [(ngModel)]="logUser.password">
+        </p>
+        <input type="submit" value="Login">
+     
+
+      </form>
+
+
+     
+    </div>
+  </div>
+  
+  
+  

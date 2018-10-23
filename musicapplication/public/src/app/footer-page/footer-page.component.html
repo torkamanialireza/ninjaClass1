@@ -1,0 +1,36 @@
+<div class="row lime accent-2">
+ 
+  <!-- <div class="col s12 m6 l3" *ngIf="!logUser">
+      
+    <h5>Login</h5>
+    <form enctype="multipart/form-data" (submit)="loginUser()">    
+      <p>
+        <input type="text" class="white" name="logUser.email" [(ngModel)]="logUser.email">
+      </p>
+      <p>
+        <input type="text" class="white" name="logUser.password" [(ngModel)]="logUser.password">
+      </p>
+      <input type="submit" value="Login">
+    
+
+    </form>
+    
+  </div> -->
+  {{newFooter |json}}
+      <div class="col s12 m6 l12 lime accent-2" style="margin:0px auto 50px 0px; bottom:0px; float:right">
+        
+        <h5>Footers</h5>
+        <form enctype="multipart/form-data" (submit)="addFooterInAddTs()">  
+    
+        <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Footer Title : </label><input type="text" class="white" name="newFooter.title" [(ngModel)]="newFooter.title"></p>
+        <p> <label style="width:100%; display: inline-block; color:black;" > Footer Content : </label><textarea style="height:250px; width:100%; max-width: 90%"  class="white" name="newFooter.content" [(ngModel)]="newFooter.content"></textarea></p>
+        <p> Footer Cover Photo : <input type="file"  name="FooterCover" (change)="onFileSelectedFooterCover($event)"></p>  
+        <input type="submit" value="Save Changes">
+        
+        </form>
+      </div>
+    
+
+
+
+</div>

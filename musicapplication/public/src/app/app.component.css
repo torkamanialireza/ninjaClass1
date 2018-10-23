@@ -1,0 +1,53 @@
+html,body{
+    height: 1200px;
+    font-size: 1em;
+    overflow-y: hidden !important;
+}
+
+
+
+nav.lime,.nav-wrapper.container {
+    height:90px;
+    line-height: 90px;
+    background: rgb(130,206,0); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(130,206,0,1) 0%, rgba(11,8,12,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82ce00', endColorstr='#0b080c',GradientType=0 ); /* IE6-9 */
+}
+.aliheader {
+    height:90px;
+    line-height: 90px;
+    background: rgb(130,206,0); /* Old browsers */
+    background: -moz-linear-gradient(top, rgb(0, 48, 206) 0%, rgba(11,8,12,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 139, 206) 0%,rgba(11,8,12,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82ce00', endColorstr='#0b080c',GradientType=0 ); /* IE6-9 */
+}
+
+
+
+.row.favorBg {
+    /* background-color: #05263a; */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#82ce00+0,0b080c+100 */
+  background: rgb(130,206,0); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(130,206,0,1) 0%, rgba(11,8,12,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82ce00', endColorstr='#0b080c',GradientType=0 ); /* IE6-9 */
+  }
+
+.hide {
+    display: none;
+}
+
+
+
+
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        /* [class*="col-"] {
+            width: 100%;
+        } */
+    }
+    

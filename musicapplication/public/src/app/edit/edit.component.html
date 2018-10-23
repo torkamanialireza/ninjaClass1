@@ -1,0 +1,10 @@
+
+<form (submit)="updateArtist(artist)">
+    <p>Artist Name: <input type="text" name="artist.artistName" [(ngModel)]="artist.artistName"></p>
+    <p>Content: <textarea style="height:150px" name="artist.artistContent" [(ngModel)]="artist.artistContent"></textarea>
+    <p>PreviewImage: <img src="assets/uploads/images/{{artist.artistImage}}" alt="" style="width:100px">
+    <p>Artist Image:  <input type="file" name="artist.artistImage" [(ngModel)]="artist.artistImage"/>
+
+    <p>Artist Cover: <input  type="text" name="artist.artistCover" [(ngModel)]="artist.artistCover"></p>
+    <input type="submit" value="Update and Save changes">
+</form>

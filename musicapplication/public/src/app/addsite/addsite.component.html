@@ -1,0 +1,214 @@
+
+<nav class="aliheader" role="navigation">
+  <ul clss="right hide-on-med-and-down">
+      <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+      <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+  </ul>
+</nav>
+
+<nav class="lime" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="assets/uploads/images/springlogo-300x255.png" width="100"></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="/favorites">Musics</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="/artists">Artists</a></li>
+      <li><a href="#">Contact us</a></li>
+      <li><a href="main/admin">admin</a></li>
+    </ul>
+    <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+  </div>
+</nav>
+<ul id="nav-mobile" class="side-nav">
+    <li><a href="#"><i class="material-icons">home</i></a></li>
+    <li><a href="#">About us</a></li>
+    <li><a href="#">Musics</a></li>
+    <li><a href="#">Videos</a></li>
+    <li><a href="#">Artists</a></li>
+    <li><a href="#">Contact us</a></li>
+
+  </ul>
+<div *ngIf="!loggedUser"> 
+  <h1>You need to login </h1> 
+  <button class="btn waves-effect waves-light" type="submit" name="action">
+   <a href="/main/users" style="color:white;">Click for Register or Sign-in Here</a> 
+      <i class="material-icons right">send</i>
+  </button>
+</div><!--endof login vertification-->
+<div *ngIf="loggedUser._id !== '5bb547178dc9f45c1414a077'"> 
+  <h1>You need to login as administrator</h1> 
+</div>
+<div *ngIf="loggedUser._id === '5bb547178dc9f45c1414a077'">
+
+  <div class="row grey lighten-4">
+     
+      <div *ngIf="!allsite.length" class="col s12 m6 l12 grey lighten-2">
+          <h5>Welcome {{loggedUser.firstName}} {{loggedUser.lastName}}</h5>
+          <h5>Site Information</h5>  
+          
+          <form enctype="multipart/form-data" (submit)="addSiteInAddTs()">   
+            <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white; font-family: 'Rubik', sans-serif; " > Site Name : </label><input type="text" class="white" name="newSite.siteName" [(ngModel)]="newSite.siteName"></p>
+            <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white;" > Site facebook : </label><input type="text" class="white" name="newSite.siteFacebook" [(ngModel)]="newSite.siteFacebook"></p>
+            <p class="col s12 m6 l4"> <label style="width:100%; display: inline-block; color:white;" > Site twitter: </label><input type="text" class="white" name="newSite.siteTwitter" [(ngModel)]="newSite.siteTwitter"></p>
+            <p class="col s12 m6 l6"> <label style="width:100%; display: inline-block; color:white;" > Site google : </label><input type="text" class="white" name="newSite.siteGoogle" [(ngModel)]="newSite.siteGoogle"></p>
+            <p class="col s12 m6 l3"> <label style="width:100%; display: inline-block; color:white;" > Site Logo photo : </label><input type="file" name="siteLogo" (change)="onFileSelectedsiteLogo($event)"></p> 
+            <p class="col s12 m6 l3"> Artist Cover Photo : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+            <p class="col s12 m6 l3"> Music Cover Photo : <input type="file"  name="musicsCover" (change)="onFileSelectedmusicsCover($event)"></p>  
+            <p class="col s12 m6 l3"> Videos Cover Photo : <input type="file"  name="videosCover" (change)="onFileSelectedvideosCover($event)"></p> 
+            <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" > Site content : </label><textarea style="height:260px;max-width:63%; min-width: 63%" class="white" name="newSite.siteContent" [(ngModel)]="newSite.siteContent"></textarea></p>   
+            <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" > background color : </label><input type="color" name="" id="">
+            <input type="submit" value="add site">
+          </form>
+  
+      </div>
+      <div class="col s12 m6 l12 grey lighten-2">
+     
+        <form enctype="multipart/form-data" (submit)="editSiteInAddTs(site)">   
+      
+          <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white; font-family: 'Rubik', sans-serif;" >Edit Site Name : </label><input type="text" class="white" name="site.siteName" [(ngModel)]="site.siteName"></p>
+          <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white;" >Edit Site facebook : </label><input type="text" class="white"  name="site.siteFacebook" [(ngModel)]="site.siteFacebook"></p>
+          <p class="col s12 m6 l4"> <label style="width:100%; display: inline-block; color:white;" >Edit Site twitter: </label><input type="text" class="white"   name="site.siteTwitter" [(ngModel)]="site.siteTwitter"></p>
+          <p class="col s12 m6 l6"> <label style="width:100%; display: inline-block; color:white;" >Edit Site google : </label><input type="text" class="white"  name="site.siteGoogle" [(ngModel)]="site.siteGoogle"></p>
+          <p class="col s12 m6 l3"> <label style="width:100%; display: inline-block; color:white;" >Edit Site Logo photo : </label><input type="file" name="siteLogo" (change)="onFileSelectedsiteLogo($event)"></p> 
+          <p class="col s12 m6 l3">Edit Artist Cover Photo : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+          <p class="col s12 m6 l3">Edit Music Cover Photo : <input type="file"  name="musicsCover" (change)="onFileSelectedmusicsCover($event)"></p>  
+          <p class="col s12 m6 l3">Edit Videos Cover Photo : <input type="file"  name="videosCover" (change)="onFileSelectedvideosCover($event)"></p> 
+          <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" >Edit Site content : </label><textarea style="height:260px;max-width:63%; min-width: 63%" class="white" name="site.siteContent" [(ngModel)]="site.siteContent"></textarea></p> 
+          <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" >Edit background color : </label><input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000" name="site.siteBg" [(ngModel)]="site.siteBg">
+          <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" >Edit font color : </label><input type="color" id="html5colorpickerFont" onchange="clickColor(0, -1, -1, 5)" value="#ff0000" name="site.siteFontColor" [(ngModel)]="site.siteFontColor"></p>
+
+  
+          <input type="submit" value="Save Changes">
+
+        </form>
+        <a href="/main/admin/menus">Menus Settings</a>
+        <a href="/main/admin/headers">Headers Settings</a>
+        <a href="/main/admin/footers">Footers Settings</a>
+        <a href="/main/admin/widgets">Widgets Settings</a>
+      </div>
+      <div id="validation" >
+          <p *ngFor="let e of errorsValidation">
+            {{e}}
+          </p>
+      </div>
+      {{allwidgets | json}} 
+       
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<!-- <div *ngIf="loggedUser">
+    {{allwidgets | json}}
+  <div class="row grey lighten-4">
+
+      <div *ngIf="!allsite.length" class="col s12 m6 l12 grey lighten-2">
+        <h5>Welcome {{loggedUser.firstName}} {{loggedUser.lastName}}</h5>
+        <h5>Site Information</h5>  
+        
+        <form enctype="multipart/form-data" (submit)="addSiteInAddTs()">   
+          <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white; font-family: 'Rubik', sans-serif; " > Site Name : </label><input type="text" class="white" name="newSite.siteName" [(ngModel)]="newSite.siteName"></p>
+          <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white;" > Site facebook : </label><input type="text" class="white" name="newSite.siteFacebook" [(ngModel)]="newSite.siteFacebook"></p>
+          <p class="col s12 m6 l4"> <label style="width:100%; display: inline-block; color:white;" > Site twitter: </label><input type="text" class="white" name="newSite.siteTwitter" [(ngModel)]="newSite.siteTwitter"></p>
+          <p class="col s12 m6 l6"> <label style="width:100%; display: inline-block; color:white;" > Site google : </label><input type="text" class="white" name="newSite.siteGoogle" [(ngModel)]="newSite.siteGoogle"></p>
+          <p class="col s12 m6 l3"> <label style="width:100%; display: inline-block; color:white;" > Site Logo photo : </label><input type="file" name="siteLogo" (change)="onFileSelectedsiteLogo($event)"></p> 
+          <p class="col s12 m6 l3"> Artist Cover Photo : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+          <p class="col s12 m6 l3"> Music Cover Photo : <input type="file"  name="musicsCover" (change)="onFileSelectedmusicsCover($event)"></p>  
+          <p class="col s12 m6 l3"> Videos Cover Photo : <input type="file"  name="videosCover" (change)="onFileSelectedvideosCover($event)"></p> 
+          <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" > Site content : </label><textarea style="height:260px;max-width:63%; min-width: 63%" class="white" name="newSite.siteContent" [(ngModel)]="newSite.siteContent"></textarea></p>   
+          <input type="submit" value="add site">
+        </form>
+
+      </div>
+
+      <div class="col s12 m6 l12 grey lighten-2">
+     
+        <form enctype="multipart/form-data" (submit)="editSiteInAddTs(site)">   
+      
+          <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white; font-family: 'Rubik', sans-serif;" >Edit Site Name : </label><input type="text" class="white" name="site.siteName" [(ngModel)]="site.siteName"></p>
+          <p class="col s12 m6 l4"><label style="width:100%; display: inline-block; color:white;" >Edit Site facebook : </label><input type="text" class="white"  name="site.siteFacebook" [(ngModel)]="site.siteFacebook"></p>
+          <p class="col s12 m6 l4"> <label style="width:100%; display: inline-block; color:white;" >Edit Site twitter: </label><input type="text" class="white"   name="site.siteTwitter" [(ngModel)]="site.siteTwitter"></p>
+          <p class="col s12 m6 l6"> <label style="width:100%; display: inline-block; color:white;" >Edit Site google : </label><input type="text" class="white"  name="site.siteGoogle" [(ngModel)]="site.siteGoogle"></p>
+          <p class="col s12 m6 l3"> <label style="width:100%; display: inline-block; color:white;" >Edit Site Logo photo : </label><input type="file" name="siteLogo" (change)="onFileSelectedsiteLogo($event)"></p> 
+          <p class="col s12 m6 l3">Edit Artist Cover Photo : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+          <p class="col s12 m6 l3">Edit Music Cover Photo : <input type="file"  name="musicsCover" (change)="onFileSelectedmusicsCover($event)"></p>  
+          <p class="col s12 m6 l3">Edit Videos Cover Photo : <input type="file"  name="videosCover" (change)="onFileSelectedvideosCover($event)"></p> 
+          <p class="col s12 m6 l12"><label style="width:100%;display: inline-block; color:white;" >Edit Site content : </label><textarea style="height:260px;max-width:63%; min-width: 63%" class="white" name="site.siteContent" [(ngModel)]="site.siteContent"></textarea></p>   
+          <input type="submit" value="Save Changes">
+        </form>
+
+      </div>
+      <div id="validation" >
+        <p *ngFor="let e of errorsValidation">
+          {{e}}
+        </p>
+      </div> 
+  </div>
+  <div class="row lime accent-2 lighten-4"> 
+    <h1 style="text-align: center">Theme Functions </h1>
+    <div class="col s12 m6 l6 lime accent-2" style="margin:0px auto 50px 0px; bottom:0px; float:right">
+        <h5>Headers</h5>
+        <form enctype="multipart/form-data" (submit)="addHeaderInAddTs()">   
+          <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Header Title : </label><input type="text" class="white" name="newHeader.title" [(ngModel)]="newHeader.title"></p>
+          <p> <label style="width:100%; display: inline-block; color:black;" > Header Content : </label><textarea style="height:250px; width:100%; max-width: 90%"  class="white" name="newHeader.content" [(ngModel)]="newHeader.content"></textarea></p>
+          <p> Header Cover Photo : <input type="file"  name="headerCover" (change)="onFileSelectedHeaderCover($event)"></p>  
+          <input type="submit" value="Save Changes">
+        
+          </form>
+      </div>
+      
+      {{newWidget | json}}
+      <div class="col s12 m6 l6 lime accent-2" style="margin:0px auto 50px 0px; bottom:0px; float:right">
+        <h5>Widgets</h5>
+        <form enctype="multipart/form-data" (submit)="addWidgetInAddTs()">   
+          <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Widget Title : </label><input type="text" class="white" name="newWidget.title" [(ngModel)]="newWidget.title"></p>
+          <p> <label style="width:100%; display: inline-block; color:black;" > Widget Content : </label><textarea style="height:250px; width:100%; max-width: 90%"  class="white" name="newWidget.content" [(ngModel)]="newWidget.content"></textarea></p>
+          <p> Widget Cover Photo : <input type="file"  name="widgetCover" (change)="onFileSelectedWidgetCover($event)"></p>  
+          <input type="submit" value="Save Changes">
+        </form>
+      </div>
+
+      
+    
+    
+  </div>
+<div class="row lime accent-2 lighten-4">
+    <div class="col s12 m6 l6 lime accent-2" style="margin:0px auto 0px 0px; bottom:0px">
+        <h5>Menus</h5>
+          <form enctype="multipart/form-data" (submit)="addFooterInAddTs()">   
+            <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Menu Title : </label><input type="text" class="white" name="newSite.siteName" [(ngModel)]="newSite.siteName"></p>
+            <p> <label style="width:100%; display: inline-block; color:black;" > Menu Link : </label><input type="text" class="white" name="newSite.siteFacebook" [(ngModel)]="newSite.siteFacebook"></p>
+            <p> menu icon : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+               
+            <input type="submit" value="Save Changes">
+          </form>
+      </div>
+      <div class="col s12 m6 l6 lime accent-2" style="margin:0px auto 0px 0px; bottom:0px; float:right">
+          <h5>Footers</h5>
+            <form enctype="multipart/form-data" (submit)="addFooterInAddTs()">   
+              <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Footer Title : </label><input type="text" class="white" name="newSite.siteName" [(ngModel)]="newSite.siteName"></p>
+              <p> <label style="width:100%; display: inline-block; color:black;" > Footer Content : </label><textarea style="height:250px; width:100%; max-width: 90%"  class="white" name="newSite.siteFacebook" [(ngModel)]="newSite.siteFacebook"></textarea></p>
+              <p> Artist Cover Photo : <input type="file"  name="artistsCover" (change)="onFileSelectedartistsCover($event)"></p>  
+              <p> Music Cover Photo : <input type="file"  name="musicsCover" (change)="onFileSelectedmusicsCover($event)"></p>  
+              <p> Videos Cover Photo : <input type="file"  name="videosCover" (change)="onFileSelectedvideosCover($event)"></p>    
+              <input type="submit" value="Save Changes">
+            </form>
+        </div>
+</div>
+</div>
+
+
+
+
+
+ -->
+
+    <!-- <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000" style="width:85%;"> -->
+  
+  <!-- <div pseudo="-webkit-input-placeholder" id="placeholder" style="display: block !important;">Color value</div> -->

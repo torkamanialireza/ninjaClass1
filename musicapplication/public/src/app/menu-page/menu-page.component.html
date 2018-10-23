@@ -1,0 +1,41 @@
+<div *ngIf="!loggedUser"> 
+    <div class="row lime accent-2">
+        <div class="col s12 m6 l3">
+            {{logUser | json}}
+            <h5>Login</h5>
+            <form enctype="multipart/form-data" (submit)="loginUser()">    
+              <p>
+                <input type="text" class="white" name="logUser.email" [(ngModel)]="logUser.email">
+              </p>
+              <p>
+                <input type="text" class="white" name="logUser.password" [(ngModel)]="logUser.password">
+              </p>
+              <input type="submit" value="Login">
+           
+      
+            </form>
+           
+          </div>
+        </div>
+</div>
+
+<div *ngIf="loggedUser">
+<div class="row">
+  <div class="col s12 m6 l6 lime accent-2" style="margin:0px auto 0px 0px; bottom:0px">
+    <h5>Menus</h5>
+    <form enctype="multipart/form-data" (submit)="addMenuInAddTs()">   
+      <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Menu link : </label><input type="text" class="white" name="newMenu.link" [(ngModel)]="newMenu.link"></p>
+      <p> <label style="width:100%; display: inline-block; color:black;" > Menu name : </label><input type="text" class="white" name="newMenu.name" [(ngModel)]="newMenu.name"></p>
+      <p> menu icon : <input type="file"  name="iconMenu" (change)="onFileSelectedIconMenu($event)"></p>  
+          
+      <input type="submit" value="Save Changes">
+    </form>
+    </div>
+    <div class="col s12 m6 l6 lime accent-2" style="margin:0px auto 0px 0px; bottom:0px">
+      <h5>Menus List</h5>
+      <div class="col s12 m6 l12" *ngFor="let menu of allmenus">
+       <img  style="width:50px; height:50px" src="assets/uploads/images/{{menu.iconMenu}}" alt="{{menu.name}}"> <p>{{menu.name}}</p>
+      </div>
+     
+    </div>
+</div>

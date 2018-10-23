@@ -1,0 +1,358 @@
+<!-- <nav class="aliheader" role="navigation">
+    <ul clss="right hide-on-med-and-down">
+        <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+        <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+    </ul>
+  </nav>
+  
+  <nav class="lime" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="assets/uploads/images/{{allSitesApp[0].siteLogo}}" width="100"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="/favorites">Musics</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="main/admin">admin</a></li>
+      </ul>
+      <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+    </div>
+  </nav>
+  <ul id="nav-mobile" class="side-nav">
+      <li><a href="#"><i class="material-icons">home</i></a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Musics</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">Artists</a></li>
+      <li><a href="#">Contact us</a></li>
+  
+    </ul> -->
+        <!-- <img src="assets/uploads/images/{{allSitesApp[0].siteLogo}}" width="100"> -->
+
+<app-navi></app-navi>
+<!-- <nav class="aliheader" role="navigation">
+    <ul clss="right hide-on-med-and-down">
+        <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+        <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+    </ul>
+  </nav>
+  
+  <nav class="lime" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">
+        <img width="100" src="assets/uploads/images/springlogo-300x255.png" alt="">
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+        <li><a href="#">About us</a></li>
+        <li class="activeinli"><a href="/favorites">Musics</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="main/admin">admin</a></li>
+      </ul>
+      <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+    </div>
+  </nav>
+  <ul id="nav-mobile" class="side-nav">
+      <li><a href="#"><i class="material-icons">home</i></a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Musics</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">Artists</a></li>
+      <li><a href="#">Contact us</a></li>
+  
+    </ul> -->
+<div class="row">
+<nav class="light-green darken-1">
+    <div class="nav-wrapper">       
+      <div class="s7 l12 navTop">
+        <a href="/artists" class="breadcrumb"><i class="material-icons">home</i></a>
+        <a href="/artists" class="breadcrumb">Artists</a>
+        <a href="/artists/{{dataMusic._id}}/" class="breadcrumb">{{dataMusic.artistName}}</a>
+        <a href="/artists/{{dataMusic._id}}/musics" class="breadcrumb">Musics</a>
+        <a href="/artists/{{dataMusic._id}}/musics/{{music._id}}" class="breadcrumb">{{music.songName}}</a>
+      </div>
+    </div>
+  </nav>
+  
+</div>
+<!-- <div class="row blue-grey darken-4 "> -->
+    <div class="row favorBg">
+
+     
+
+
+  <ul id="musicsPanel" class="col s12 m6 l4">
+
+      <a *ngIf="loggedUser" href="/artists/{{dataMusic._id}}/musics/new" style="float:right">Add New Music</a>
+
+      <li *ngFor="let song of dataMusic.musics; let i = index" [ngStyle]="{'color': myFunction(song,music),'background-color': myFunctionB(song,music,i)}" class="col s12 m6 l12 testa song-{{i}}">  
+        <img style="width:50px; height: 50px" src="/assets/uploads/images/{{song.musicImage}}" alt="" />
+        <a class="testa" href="/artists/{{dataMusic._id}}/musics/{{song._id}}" [ngStyle]="{'color': myFunction(song,music),'background-color': myFunctionB(song,music)}">
+        <span>{{song.songName}}</span>  
+        
+        <!-- <span>{{song.playerCounter}} Plays</span> -->
+        <span>{{dataMusic.artistName}}</span>
+
+        
+       
+        </a>  
+  
+      </li>
+    </ul>
+        <!-- <div class="col s12 m6 l4" [ngStyle]="{'background-color':'black','background-image': testBg(music),'background-size':'cover','height':'60%','background-repeat':'no-repeat', 'background-position': 'center'}"> -->
+
+  <div class="col s12 m6 l4" style="text-align: center">
+    <img style="width:100%;min-height: 33.33vw; max-height:100vw;  height: auto;" src="/assets/uploads/images/{{music.musicImage}}" alt="{{dataMusic.artistName}}">      
+  </div>
+
+ 
+  
+  <audio id="audioPlayer" 
+  src="assets/uploads/medias/{{music.songCover}}"
+  ondurationchange="durationBar()"
+  autoplay>
+</audio>
+  <div class="col s12 m6 l4" style="text-align: center">
+    <h4>{{dataMusic.artistName}}</h4>
+    <h3>{{music.songName}}</h3>
+
+    <a style="color:white">Date added:{{music.createdAt | date}}</a>
+    <!-- <h2 id="testkon"></h2> -->
+    <p style="color:white">{{music.playerCounter}} plays</p> 
+    <p style="color:white">Purchased From Itunes </p> 
+    <p style="color:white"><a href="{{music.content}}" style="background-color:#fd4552;color:white;">Buy this Song From Itunes<img src="assets/images/itunes.png" alt="" style="width:32px; height: auto;"></a></p> 
+    <a *ngIf="loggedUser" href="/artists/{{dataMusic._id}}/musics/{{music._id}}/edit">edit Music</a>
+   
+
+    <!-- //old -->
+    <!-- <button class="addFv" *ngIf="!dataMusic.members.length || archiveMusicMemberItem._id !== music._id" (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart" style="font-size:40px; color:rgb(122,122,122)"></i> add to favorite</button>
+    <a *ngFor="let favorMuw of dataMusic.members">
+       <button class="removeFv" *ngIf="favorMuw._id === music._id" (click)="removeFromFavor(dataMusic,favorMuw)"><i class="fas fa-heart" style="font-size:40px; color:rgb(122,122,122)"></i>add shod</button>
+    </a> -->
+
+    <!-- <a *ngIf="!dataMusic.members.length">
+      <button class="addFv" (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart" style="font-size:40px; color:rgb(122,122,122)"></i> add to favorite</button>
+    </a> -->
+ 
+    <!-- <h2 [ngStyle]="{'color':testkonim(dataMusic,music)}">
+
+      
+    </h2>  -->
+
+    <a *ngIf="!loggedUser" [ngStyle]="{'color':arrayItemchecker(dataMusic.members,music)}"></a>
+  
+    <!-- <button *ngIf="javablast === 'red'" (click)="removeFromFavor(dataMusic,music)"><i class="fas fa-heart"></i>already added</button>
+    <button *ngIf="javablast === 'blue'" (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart"></i>add to favorite</button>
+    <button *ngIf="javablast === 'green'" (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart"></i>add to favorite</button> -->
+    <a *ngIf="loggedUser" [ngStyle]="{'color':arrayItemchecker(loggedUser.members,music)}"></a>
+    <button *ngIf="javablast === 'green' || !loggedUser || javablast === 'blue'" (click)="addtoUser(music)"><i class="far fa-heart"></i>add to user</button>
+    <button *ngIf="javablast === 'red' && loggedUser"><i class="fas fa-heart"></i>already added in user</button>
+    <!-- <button *ngIf="javablast === 'blue'" (click)="addtoUser(music)"><i class="far fa-heart"></i>add to favorite</button> -->
+
+    <!-- <p>mitem{{archiveMusicMemberItem._id}}</p> -->
+    <!-- <p>testitem{{musicTest._id}}</p> -->
+    <!-- <p>
+        <button *ngIf="!dataMusic.members.length" (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart"></i> be the first favorite</button>
+    </p> 
+    <p *ngIf="dataMusic.members.length"> 
+        {{archiveMusicMemberItem._id}}
+        {{music._id}}
+        <button *ngIf="archiveMusicMemberItem._id !== music._id" (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart"></i> add to favorite</button>
+        <button *ngIf="archiveMusicMemberItem._id === music._id" (click)="removeFromFavor(dataMusic,music)"><i class="far fa-heart"></i> remove</button>
+
+    </p> -->
+    <!-- <div *ngIf="archiveMusicMemberItem._id == music._id">
+        Already Added<button (click)="removeFromFavor(dataMusic,music)"><i class="fas fa-heart"></i>Remove</button>
+    </div>
+    <div *ngIf="dataMusic.members.length && archiveMusicMemberItem._id != music._id">
+        <button (click)="addtoFavor(dataMusic._id,music)"><i class="far fa-heart"></i>is not in the list</button>
+    </div> -->
+    <!-- <div *ngIf="functionNew()">
+        
+    </div> -->
+    
+    
+    
+    
+  </div>
+</div>
+<div *ngIf="loggedUser" class="row favorBg1">
+<!-- <h2>popular and Favorites of this artists</h2> -->
+
+<div class="col s4 m3 l2" *ngFor="let favor of loggedUser.members" (click)="playthisMusic(favor)">
+
+  <img style="width:150px; height: 150px" src="/assets/uploads/images/{{favor.musicImage}}" alt="{{dataMusic.artistName}}">    
+  <button (click)="removeFromUser(favor)"><i class="far fa-heart"></i> Remove From favorites</button>
+  <!-- <button (click)="removeFromFavor(dataMusic,favor)"><i class="far fa-heart"></i> remove</button> -->
+
+</div>
+
+</div>
+<div class="row favorBg">
+
+  <div id="sliders4">
+      <p class="blue">{{niceLyric}}</p>
+ 
+      <!-- {{lyricArray}} -->
+      <!-- <img style="width:200px; height: 200px" src="http://localhost:8000/assets/uploads/images/2a22461f370a4f0698daf8de5d38f5b0.jpg"> -->
+      <div>
+          
+      </div>
+      <div *ngFor="let l of music.lyrics; let i=index" class="test hide" id="{{i}}">
+        <!-- {{l.content}} -->
+
+      
+      </div>
+     
+     
+
+      
+      <!-- <div class="test1 hide">
+        hello
+      </div>
+      <div class="test2 hide">
+          nice
+      </div> -->
+    
+        
+  </div>
+  <div>
+     
+  </div>
+  
+  <div id="sliders2">
+    <!-- {{seekNumber}} -->
+    <!-- {{player.currentTime*1000}} -->
+      <div>
+          
+      </div>
+      <!-- <div *ngFor="let li of music.lyrics; let i=index" class="lm-{{i}} test hide" id="{{i}}">
+        {{li.content}}
+      </div> -->
+      <!-- <p style="color:white">{{niceLyric}}</p> -->
+      
+
+      <!-- <div *ngFor="let m of music.lyrics;let i = index" class="ls-{{i}}" [ngStyle]="{'color':testFindLyric(m.fadeIn,m.fadeOut,m.content,music,i,music.lyrics[i+1])}">thisfade:{{m.fadeIn*1000}} thisfadeout:{{m.fadeOut*1000}} currentTime:{{player.currentTime*1000}} test: {{durariontime}}</div>   -->
+      <div *ngFor="let m of music.lyrics;let i = index" class="ls-{{i}}" [ngStyle]="{'color':testFindLyric(m.fadeIn,m.fadeOut,m.content,music,i,music.lyrics[i+1])}">
+
+        <p style="cursor: pointer; text-align: center" (click)="jumpfunction(m.fadeIn)">
+          <span>{{m.content}}</span>       
+        </p>
+        <span><button class="yellow btnJump" (click)="jumpfunction(m.fadeIn)">Jump to this part</button></span> 
+
+      </div>  
+
+      <p class="hide">{{niceLyric}}</p>
+      
+  </div>
+
+</div>
+
+<div class="row2">
+    <canvas id="canvas" width="1600" height="350"></canvas>
+</div>
+<div class="row testFooter">
+<div class="row">
+  <!-- <div class="row">
+      onload="myScript()"
+      ontimeupdate="myScript()"
+      onplay="Update_Play_Pause()" 
+</div> -->
+<!-- <input id="audioSeekBar" type="range" onchange="audioSeekBar()"> -->
+<!-- <button id="mutebtn">Mute</button> -->
+
+<div class="row" style="background-color: #272341">
+  <div class="col s12 m6 l6" style="margin-top:60px;float:left;text-align: center ;height:20px; line-height:20px">
+   <button id="mute_unmute" value="Mute" onclick="Mute_Unmute()" style="width:20px;"><i style="font-size:20px;" class="fa fa-volume-up" aria-hidden="true"></i></button> 
+  <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" onvolumechange="setvolume()" style="width:60%; margin-left:5px">
+  </div>
+  <div class="col s12 m6 l6" style="margin-top:60px; float:left; text-align: center">
+    <span class="white" id="currentTime">0:00</span>
+    <input id="testranger" type="range" style="width:60%">
+    <span class="white" id="restTime">0:00</span>|<span class="white" id="totalTime">0:00</span>
+  </div>
+</div>
+<div class="row playerDetails l12 s6" style="background-color: #272341;">
+    <div class="col s12">
+      <div class="col s2" style="text-align: center">
+          <button id="play" style="text-align: center"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button>
+
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button id="loop_unloop" (click)="LoopUnloop()" style="text-align: center"><i style="font-size:40px; margin:60px auto;" class="material-icons">loop</i></button>
+      </div>
+      <div class="col s2" style="text-align: center">  
+        <button id="pause" style="text-align: center"><i style="font-size:40px;" class="fa fa-pause" aria-hidden="true"></i></button>
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button id="restart" style="text-align: center"><i style="font-size:40px;" class="fa fa-redo" aria-hidden="true"></i></button>
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button (click)="preMusicS(dataMusic.musics,player.src)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button (click)="nextMusicS(dataMusic.musics,player.src)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+</div>
+</div>
+<div class="row tabbars transparent alltab">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#test1">Comments</a></li>
+        <li class="tab col s4"><a href="#test2">Lyric</a></li>
+        <li class="tab col s4"><a class="active" href="#test4">About Artist</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s4 comment">
+  
+
+      <p *ngFor="let comment of music.users" style="margin: 20px auto;color: #b0a1c5;">
+          <span><strong style="color: #caa9f8;">{{comment.name}}:</strong></span>{{comment.comment}}
+          
+      </p>
+
+      <!-- *ngIf="loggedUser" -->
+    
+      <form (submit)="addtoComment(newComment)" *ngIf="loggedUser"> 
+
+        <!-- <label for="">Your Name:</label>
+        <input type="text" name="newComment.name" value="loggedUser.firsName" [(ngModel)]="newComment.name"> -->
+        <label for="">Your Message:</label>
+        <textarea style="width:380px;min-width:380px;min-height:150px;max-height:150px;margin:10px auto;background-color: #0000003d;" name="newComment.comment" [(ngModel)]="newComment.comment"></textarea>
+        <input type="submit" value="Add New Comment">
+      </form>
+    
+      <div *ngIf="!loggedUser">
+        <!-- <h2>for add comment you need to login</h2> -->
+        <form enctype="multipart/form-data" (submit)="loginUser()">    
+          <p>
+            <label for="logUser.email">Email</label>
+            <input type="text" class="white" name="logUser.email" [(ngModel)]="logUser.email">
+          </p>
+          <p>
+            <label for="logUser.email">Password</label>
+            <input type="password" class="white" name="logUser.password" [(ngModel)]="logUser.password">
+          </p>
+          <input type="submit" value="Login">
+       
+  
+        </form>
+
+      </div>
+    </div>
+    <div id="test2" class="col s4" style="text-align: center; width:50%; margin-left:25%;color: #b0a1c5;">
+      <p *ngFor="let l of music.lyrics" style="margin:10px 0">
+        {{l.content}}
+      </p>
+      </div>
+    <div id="test4" class="col s4"></div>
+</div>
+</div>
+
+<!-- <app-jquery></app-jquery> -->
+
+

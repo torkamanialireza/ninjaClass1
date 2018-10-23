@@ -1,0 +1,262 @@
+ <!-- <button id="backward" (click)="preFunc(itemNumber)"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button> -->
+  <!-- <button id="pause" style="text-align: center"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button> -->
+  <!-- <button id="play" style="text-align: center"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button> -->
+  <!-- <button id="forward" (click)="forFunc(itemNumber)"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button> -->
+<!-- <div class="row playerDetails l12 s6" style="background-color: #272341;">
+    <div class="col s12">
+      <div class="col s2" style="text-align: center">
+          <button id="play" style="text-align: center"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button>
+
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button id="loop_unloop" (click)="LoopUnloop()" style="text-align: center"><i style="font-size:40px; margin:60px auto;" class="material-icons">loop</i></button>
+      </div>
+      <div class="col s2" style="text-align: center">  
+        <button id="pause" style="text-align: center"><i style="font-size:40px;" class="fa fa-pause" aria-hidden="true"></i></button>
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button id="restart" style="text-align: center"><i style="font-size:40px;" class="fa fa-redo" aria-hidden="true"></i></button>
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button (click)="preFunc(itemNumber)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      </div>
+      <div class="col s2" style="text-align: center">
+        <button (click)="forFunc(itemNumber)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+</div> -->
+
+<!-- <div class="row favorBg">
+  <div id="sliders">
+      <div>
+          
+      </div>
+      <div *ngFor="let lyric of users[0].members[itemNumber].lyrics; let i=index" class="test" id="{{i}}">
+          {{lyric | json}}
+      </div>   
+  </div>
+</div> -->
+<!-- original -->
+<!-- <div class="row">
+  <nav class="light-green darken-1">
+      <div class="nav-wrapper">       
+        <div class="s7 l12 navTop">
+          <a href="/main/admin" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a>{{loggedUser.firstName}}</a>
+        </div>
+      </div>
+  </nav> 
+</div>  
+
+<audio src="" id="audioPlayer"></audio>
+
+<div class="row favorBg" *ngIf="loggedUser">
+  <ul id="musicsPanel" class="col s12 m6 l4 scrollul" [ngStyle]="{'color':testMode(itemNumber)}">
+    <li *ngFor="let song of users[0].members;let i = index" (click)="funcalert(song, i)" class="noactive song-{{i}}">  
+      <img style="width:50px; height: 50px" src="assets/uploads/images/{{song.musicImage}}" alt="" />    
+      <a class="liFav">
+      {{song.songName}}
+      </a>
+      
+    </li>
+  </ul>
+
+  <div class="col s12 m6 l4" style="height:50%">
+    <img src="assets/uploads/images/{{loggedUser.members[0].musicImage}}" id="image" style="width:100%; height:100%; object-fit: cover" alt="nice">
+  </div>
+</div>
+
+
+
+
+
+<div class="row2">
+  <canvas id="canvas" width="1600" height="350"></canvas>
+</div>
+<div class="row testFooter">
+<div class="row">
+  <div class="row" style="background-color: #272341">
+    <div class="twenty" style="margin-top:60px;width:40%;float:left;text-align: center ;height:20px; line-height:20px">
+      <button id="mute_unmute" value="Mute" onclick="Mute_Unmute()" style="width:20px;"><i style="font-size:20px;" class="fa fa-volume-up" aria-hidden="true"></i></button> 
+      <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" onvolumechange="setvolume()" style="width:100px; margin-left:5px">
+    </div>
+    <div class="eighty" style="margin-top:60px;width:60%; float:left; text-align: center">
+      <span id="currentTime">0:00</span>
+      <input id="testranger" type="range" style="width:60%">
+      <span id="restTime">0:00</span>|<span id="totalTime">0:00</span>
+    </div>
+  </div>
+
+  <div class="row playerDetails l12 s6" style="background-color: #272341;">
+      <div class="col s12">
+        <div class="col s2" style="text-align: center">
+            <button id="play" style="text-align: center"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button>
+  
+        </div>
+        <div class="col s2" style="text-align: center">
+          <button id="loop_unloop" (click)="LoopUnloop()" style="text-align: center"><i style="font-size:40px; margin:60px auto;" class="material-icons">loop</i></button>
+        </div>
+        <div class="col s2" style="text-align: center">  
+          <button id="pause" style="text-align: center"><i style="font-size:40px;" class="fa fa-pause" aria-hidden="true"></i></button>
+        </div>
+        <div class="col s2" style="text-align: center">
+          <button id="restart" style="text-align: center"><i style="font-size:40px;" class="fa fa-redo" aria-hidden="true"></i></button>
+        </div>
+        <div class="col s2" style="text-align: center">
+          <button (click)="preFunc(itemNumber)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        </div>
+        <div class="col s2" style="text-align: center">
+          <button (click)="forFunc(itemNumber)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+  </div>
+
+</div>
+</div> -->
+
+<!-- <nav class="aliheader hide" role="navigation">
+  <ul clss="right hide-on-med-and-down">
+      <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+      <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+  </ul>
+</nav> -->
+
+<!-- <nav class="lime" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">
+      <img width="100" src="assets/uploads/images/springlogo-300x255.png" alt="">
+
+  </a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="/favorites">Musics</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="/artists">Artists</a></li>
+      <li><a href="#">Contact us</a></li>
+    
+    </ul>
+    <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+  </div>
+</nav>
+<ul id="nav-mobile" class="side-nav">
+    <li><a href="#"><i class="material-icons">home</i></a></li>
+    <li><a href="#">About us</a></li>
+    <li><a href="#">Musics</a></li>
+    <li><a href="#">Videos</a></li>
+    <li><a href="#">Artists</a></li>
+    <li><a href="#">Contact us</a></li>
+
+  </ul> -->
+  <app-navi></app-navi>
+ <!-- {{allSitesAppNav}} -->
+<div *ngIf="!loggedUser" class="row"> 
+    <fieldset class="col s12 m6 l4">
+   
+        <h5>Login</h5>
+      <form enctype="multipart/form-data" (submit)="loginUserB()">    
+        <p>
+          <label for="logUserB.email">Email</label>
+          <input type="text" class="white" name="logUserB.email" [(ngModel)]="logUserB.email">
+        </p>
+        <p>
+          <label for="logUserB.email">Password</label>
+          <input type="password" class="white" name="logUserB.password" [(ngModel)]="logUserB.password">
+        </p>
+        <input type="submit" value="Login">
+     
+
+      </form>
+     
+    </fieldset>
+</div>
+<div class="showUser">
+<div class="row">
+  <nav class="light-green darken-1">
+      <div class="nav-wrapper">       
+        <div class="s7 l12 navTop">
+          <a href="/main" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a>{{loggedUser.firstName}}</a>
+          length:{{loggedUser.members.length}}
+        </div>
+      </div>
+  </nav> 
+</div>  
+<audio src="" id="audioPlayer"></audio>
+
+<div class="row favorBg">
+  <ul id="musicsPanel" class="col s12 m6 l4 scrollul" [ngStyle]="{'color':testMode(itemNumber)}">
+    <li *ngFor="let song of loggedUser.members;let i = index" (click)="funcalert(song, i)" class="noactive song-{{i}}">  
+      <img style="width:50px; height: 50px" src="assets/uploads/images/{{song.musicImage}}" alt="" />    
+      <a class="liFav">
+      {{song.songName}}
+      </a>
+      
+    </li>
+  </ul>
+  <div class="col s12 m6 l4 fav" style="height:50%">
+    <img src="assets/uploads/images/{{loggedUser.members[0].musicImage}}" id="image" style="width:100%; height:100%" alt="nice">
+  </div>
+</div>
+
+<div class="row2">
+    <canvas id="canvas" width="1600" height="350"></canvas>
+  </div>
+  <div class="row testFooter">
+  <div class="row">
+    <div class="row" style="background-color: #272341">
+      <div class="twenty" style="margin-top:60px;width:40%;float:left;text-align: center ;height:20px; line-height:20px">
+        <button id="mute_unmute" value="Mute" onclick="Mute_Unmute()" style="width:20px;"><i style="font-size:20px;" class="fa fa-volume-up" aria-hidden="true"></i></button> 
+        <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" onvolumechange="setvolume()" style="width:100px; margin-left:5px">
+      </div>
+      <div class="eighty" style="margin-top:60px;width:60%; float:left; text-align: center">
+        <span id="currentTime">0:00</span>
+        <input id="testranger" type="range" style="width:60%">
+        <span id="restTime">0:00</span>|<span id="totalTime">0:00</span>
+      </div>
+    </div>
+  
+    <div class="row playerDetails l12 s6" style="background-color: #272341;">
+        <div class="col s12">
+          <div class="col s2" style="text-align: center">
+              <button id="play" style="text-align: center"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button>
+    
+          </div>
+          <div class="col s2" style="text-align: center">
+            <button id="loop_unloop" (click)="LoopUnloop()" style="text-align: center"><i style="font-size:40px; margin:60px auto;" class="material-icons">loop</i></button>
+          </div>
+          <div class="col s2" style="text-align: center">  
+            <button id="pause" style="text-align: center"><i style="font-size:40px;" class="fa fa-pause" aria-hidden="true"></i></button>
+          </div>
+          <div class="col s2" style="text-align: center">
+            <button id="restart" style="text-align: center"><i style="font-size:40px;" class="fa fa-redo" aria-hidden="true"></i></button>
+          </div>
+          <div class="col s2" style="text-align: center">
+            <button (click)="preFunc(itemNumber)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-left" aria-hidden="true"></i></button>
+          </div>
+          <div class="col s2" style="text-align: center">
+            <button (click)="forFunc(itemNumber)" id="next" style="text-align: center"><i style="font-size:40px;" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+    </div>
+  
+  </div>
+  </div>
+</div>
+  
+ 
+
+ 
+
+        
+        
+
+
+
+
+
+
+
+
+  
+
+    

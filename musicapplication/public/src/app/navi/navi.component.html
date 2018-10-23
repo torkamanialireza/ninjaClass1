@@ -1,0 +1,58 @@
+<nav *ngIf="loggedUser" class="aliheader" role="navigation">
+    <ul clss="right hide-on-med-and-down">
+        <li><a>Welcome {{loggedUser.firstName}} {{loggedUser.lastName}}</a></li>
+        <li><a (click)="logoutKon()">Sign out</a>
+        <!-- <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li> -->
+    </ul>
+  </nav>
+  
+  <!-- <nav class="lime" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">
+        <img width="100" src="assets/uploads/images/springlogo-300x255.png" alt="">
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+        <li><a href="#">About us</a></li>
+        <li class="activeinli"><a href="/favorites">Musics</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="main/admin">admin</a></li>
+      </ul>
+      <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+    </div>
+  </nav>
+  <ul id="nav-mobile" class="side-nav">
+      <li><a href="#"><i class="material-icons">home</i></a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Musics</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">Artists</a></li>
+      <li><a href="#">Contact us</a></li>
+  
+    </ul> -->
+
+    <nav class="lime" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="assets/uploads/images/springlogo-300x255.png" width="100"></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="/favorites">Musics</a></li>
+            <li><a href="#">Videos</a></li>
+            <li><a href="/artists">Artists</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="main/admin">admin</a></li>
+          </ul>
+          <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+        </div>
+      </nav>
+      <ul id="nav-mobileM" class="hide hide-on-large-only show-on-small show-on-med">
+          <li><a href="/main"><i class="material-icons">home</i></a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="/favorites">Musics</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="/main/users">sign-in</a></li>
+      
+        </ul>

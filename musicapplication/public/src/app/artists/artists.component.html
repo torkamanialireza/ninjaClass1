@@ -1,0 +1,296 @@
+
+<!-- <nav>
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          
+            <li><a href="/artists/new" style="float:right">Add New Artist</a></li>
+            
+          </ul>
+      <div class="col s12">
+        <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+        <a href="/artists" class="breadcrumb">Artists</a>           
+      </div>
+      
+      
+    </div>
+  </nav> -->
+  
+  <!-- <nav class="aliheader" role="navigation">
+        <ul clss="right hide-on-med-and-down">
+            <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+            <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+        </ul>
+      </nav>
+      
+      <nav class="lime" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="assets/uploads/images/{{allSitesApp[0].siteLogo}}" width="100"></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="/favorites">Musics</a></li>
+            <li><a href="#">Videos</a></li>
+            <li><a href="/artists">Artists</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="main/admin">admin</a></li>
+          </ul>
+          <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+        </div>
+      </nav>
+      <ul id="nav-mobileM" class="hide hide-on-large-only show-on-small show-on-med">
+          <li><a href="/main"><i class="material-icons">home</i></a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Musics</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="#">Artists</a></li>
+          <li><a href="#">Contact us</a></li>
+      
+        </ul> -->
+<app-navi></app-navi>
+<div style="overflow: hidden">
+    <div id="contentSlider" style="overflow: hidden">
+        <div class="sample">
+            <img id="niceImg" src="assets/uploads/images/{{allArtists[0].artistImage}}" style="width:100% ;height:100%; object-fit: cover" class="blur">
+    
+                <div id="eightyper" class="red" [ngStyle]="{'background-image': getFunction(allArtists[0]), 'background-size':'contain','background-position': 'top'}">
+                    <!-- <img src="assets/uploads/images/{{allArtists[0].artistImage}}" class="noblur"> -->
+    
+                    <p><span class="name">{{allArtists[0].artistName}}</span></p>
+                    <p><span class="orange">Followers {{allArtists[0].followers}}</span></p> 
+                    <p class="rightn"><span>{{allArtists[0].artistContent}}</span></p>
+                </div>
+        </div>
+
+        <div id="slideshowArtist">
+
+            <div class="testy" style="background-image: url('assets/uploads/images/springlogo-300x255.png')">
+                
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngFor="let sliderArtist of allArtists; let j = index" class="todaySlider slider-{{j}} hide">
+                <img id="niceImg" src="assets/uploads/images/{{sliderArtist.artistImage}}" style="width:100% ;height:100%; object-fit: cover" class="blur">
+
+                <div id="eightyper" [ngStyle]="{'background-image': getFunction(sliderArtist), 'background-size':'contain','background-position':'top', 'background-repeat': 'no-repeat'}">
+                    <!-- <img src="assets/uploads/images/{{allArtists[0].artistImage}}" class="noblur"> -->
+
+                    <p><span class="name">{{sliderArtist.artistName}}</span></p>
+                    <p><span class="orange">Followers {{sliderArtist.followers}}</span></p> 
+                    <p class="rightn"><span>{{sliderArtist.artistContent}}</span></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <div *ngFor="let slidercontent of allArtists; let i = index" class="mySlides Acover">
+            <a class="artistName">{{slidercontent.artistName}}</a>
+
+        </div> -->
+    
+    </div>
+    <div class="slideshow-container">
+        <div *ngFor="let artisttest of allArtists; let i = index" class="mySlides fade s-{{i}}" (click)="artistfinder(allArtists,artisttest,i)">
+
+        <img src="assets/uploads/images/{{artisttest.artistImage}}" style="width:100% ;height:100%; object-fit: cover">
+        </div>
+    </div>
+</div>
+<nav class="black">
+        <div class="nav-wrapper">
+            <div class="col s12">
+            <a href="/artists" class="breadcrumb">Artists</a>
+            <a [ngStyle]="{'display': LoggeduserChecker()}" href="/artists/new" class="breadcrumb">Add New Artist</a>
+            </div>
+        </div>
+</nav>
+
+<div>
+    <!-- <iframe src="http://localhost:8000/artists/5bbc762d923fc9f8e1d82603/musics/5bbc76d5923fc9f8e1d82605" style="height:100vh;width:100vw"></iframe> -->
+</div>
+
+<form class="row" id="formArtist" (submit)="testjadid()" autocomplete="off">
+    
+       <input class="col s12 m6 l6" placeholder="Search For Artists" type="text" (keydown)="testArt()" id="testArt" name="newForm.artistSearcher" [(ngModel)]="newForm.artistSearcher">
+        
+        <i *ngIf="newForm.artistSearcher.length > 0" (click)="clearKon()" id="cancelBtn" class="material-icons">cancel</i> 
+
+    
+      <input type="submit" class="hide" value="Search">
+
+       <i id="searcher" (click)="testjadid()" class="material-icons">search</i>
+    
+        
+   
+</form>
+<div class="row show-on-large hide-on-med-and-up hide-on-small-only hide-on-med-only">
+<ul id="showContent" *ngIf="newForm.artistSearcher.length > 0" class="hide">
+        <li class="testi show-on-large hide-on-med-and-up hide-on-small-only hide-on-med-only" style="width:100%; height:64px; float:left" *ngFor="let selecteda of searchContentBox">
+                <a style="color:black" [routerLink]="['/artists/',selecteda._id]">
+                    <span><img style="width:64px; height:64px; object-fit: cover" src="./assets/uploads/images/{{selecteda.artistImage}}" alt=""></span>
+                    <span>{{selecteda.artistName}}</span>
+                </a>
+        </li>
+    
+</ul>
+</div>
+<div class="row hide-on-large-only show-on-small hide-on-med-only">
+        
+    <ul id="showContentMobile" *ngIf="newForm.artistSearcher.length > 0" class="hide">
+            <li style="width:100%; height:64px; float:left" *ngFor="let selectedb of searchContentBox">
+                    <a style="color:black" [routerLink]="['/artists/',selectedb._id]">
+                        <span><img style="width:64px; height:64px; object-fit: cover" src="./assets/uploads/images/{{selectedb.artistImage}}" alt=""></span>
+                        <span>{{selectedb.artistName}}</span>
+                    </a>
+            </li>
+        
+    </ul>
+</div>
+
+<div class="row hide-on-small-only show-on-med hide-on-large-only">
+        <ul id="showContentIpad" *ngIf="newForm.artistSearcher.length > 0" class="hide">
+                <li class="testi hide-on-small-only show-on-med hide-on-large-only" style="width:100%; height:64px; float:left" *ngFor="let selectedc of searchContentBox">
+                        <a style="color:black" [routerLink]="['/artists/',selectedc._id]">
+                            <span><img style="width:64px; height:64px; object-fit: cover" src="./assets/uploads/images/{{selectedc.artistImage}}" alt=""></span>
+                            <span>{{selectedc.artistName}}</span>
+                        </a>
+                </li>
+            
+        </ul>
+    </div>
+
+      
+<nav class="grey" style="height:36px;">
+       
+    <span (click)="showAll()" class="spanArtist">All</span>
+    <span (click)="showArtst('a')" class="spanArtist">A</span>
+    <span (click)="showArtst('b')" class="spanArtist">B</span>
+    <span (click)="showArtst('c')" class="spanArtist">C</span>
+    <span (click)="showArtst('d')" class="spanArtist">D</span>
+    <span (click)="showArtst('e')" class="spanArtist">E</span>
+    <span (click)="showArtst('f')" class="spanArtist">F</span>
+    <span (click)="showArtst('g')" class="spanArtist">G</span>
+    <span (click)="showArtst('h')" class="spanArtist">H</span>
+    <span (click)="showArtst('i')" class="spanArtist">I</span>
+    <span (click)="showArtst('j')" class="spanArtist">J</span>
+    <span (click)="showArtst('k')" class="spanArtist">K</span>
+    <span (click)="showArtst('l')" class="spanArtist">L</span>
+    <span (click)="showArtst('m')" class="spanArtist">M</span>
+    <span (click)="showArtst('n')" class="spanArtist">N</span>
+    <span (click)="showArtst('o')" class="spanArtist">O</span>
+    <span (click)="showArtst('p')" class="spanArtist">P</span>
+    <span (click)="showArtst('q')" class="spanArtist">Q</span>
+    <span (click)="showArtst('r')" class="spanArtist">R</span>
+    <span (click)="showArtst('s')" class="spanArtist">S</span>
+    <span (click)="showArtst('t')" class="spanArtist">T</span>
+    <span (click)="showArtst('u')" class="spanArtist">U</span>
+    <span (click)="showArtst('v')" class="spanArtist">V</span>
+    <span (click)="showArtst('w')" class="spanArtist">W</span>
+    <span (click)="showArtst('x')" class="spanArtist">X</span>
+    <span (click)="showArtst('y')" class="spanArtist">Y</span>
+    <span (click)="showArtst('z')" class="spanArtist">Z</span>
+       
+</nav>
+
+<div class="row">
+<div class="col s12 black darken-4" style="color:red"><p style="text-align: center">Banner</p></div>
+</div>
+<div class="row" id="allartists">   
+    <h1>Artists</h1>
+    
+    <!-- <div class="artist col s12 m6 l6" [ngStyle]="{'background-image': getFunctionArtistSite(allSites[1]),'height': '550px','background-size': '100% 100%','background-repeat': 'no-repeat'}">    
+    </div> -->
+    <!-- [ngStyle]="{'background-image': getFunction(artist),'height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}" -->
+    <!-- <div class="col s6 m6 l3" *ngFor="let artist of allArtists" [ngStyle]="{'background-image': getFunction(artist),'height':'25vw','background-size': 'cover','background-repeat': 'no-repeat'}"> -->
+      <div class="testi show-on-large hide-on-med-and-up hide-on-small-only hide-on-med-only" style="width:12.5%; height:12.5vw; float:left" *ngFor="let artist of allArtists">
+      <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+      <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+      <button [ngStyle]="{'display': LoggeduserChecker()}" (click)="removeArtist(artist)">Remove</button>
+    </div>
+
+    <div class="hide-on-large-only show-on-small hide-on-med-only" style="width:50%; float:left;height:50vw;" *ngFor="let artist of allArtists">
+        <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+        <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+        <button [ngStyle]="{'display': LoggeduserChecker()}" (click)="removeArtist(artist)">Remove</button>
+      </div>
+
+
+      <div class="hide-on-small-only show-on-med hide-on-large-only" style="width:25%; float:left;height:25vw;" *ngFor="let artist of allArtists">
+          <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+          <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+          <button [ngStyle]="{'display': LoggeduserChecker()}" (click)="removeArtist(artist)">Remove</button>
+        </div>
+      <!-- <div class="show-on-med-and-down hide-on-med-only hide-on-large-only" style="width:25%; float:left;height:25vw;" *ngFor="let artist of allArtists">
+          <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+          <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+          <button (click)="removeArtist(artist)">Remove</button>
+      </div>
+      <div class="show-on-medium" style="width:25%; float:left;height:25vw;" *ngFor="let artist of allArtists">
+          <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+          <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+          <button (click)="removeArtist(artist)">Remove</button>
+      </div> -->
+</div>
+
+<!-- <div class="row">
+    <h1>Videos</h1>
+    <div class="artist col s12 m6 l6" [ngStyle]="{'background-image': getFunctionVideo(allSites[1]),'height': '550px','background-size': '100% 100%','background-repeat': 'no-repeat'}">  
+    </div>
+    <div class="row" *ngFor="let Artistvideo of allArtists; let i = index" [ngStyle]="{'height': 'auto','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+      <div class="col s12 m6 l3" *ngFor="let video of Artistvideo.videos; let i = index" [ngStyle]="{'background-image': getFunctionVideoSite(video),'height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+      </div>
+    </div>
+</div>
+<div class="row">
+    <h1>Musics</h1>
+    <div class="artist col s12 m6 l6" [ngStyle]="{'background-image': getFunctionMusicSite(allSites[1]),'height': '550px','background-size': '100% 100%','background-repeat': 'no-repeat'}">     
+    </div>
+    <div class="row" *ngFor="let artistM of allArtists; let i = index" [ngStyle]="{'height': 'auto','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+      <div class="col s12 m6 l3" *ngFor="let music of artistM.musics; let i = index" [ngStyle]="{'background-image': getFunctionMusic(music),'height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+        {{music.content}}
+      </div>   
+    </div>
+</div> -->
+
+<!-- new slide code -->
+
+    <br>
+    
+    <!-- <div style="text-align:center">
+        number:{{testNumber}}
+      <span ngFor="let number of allArtists; let i =index" class="dot" (click)="currentSlide(i)"></span> 
+      <span class="dot" onclick="currentSlide(i)"></span> 
+      <span class="dot" onclick="currentSlide(i)"></span> 
+    </div>
+
+    <button class="next" (click)="nextSlide()">&#10094; next </button>
+    <button *ngIf="testNumber >= 1" class="pre" (click)="preSlide()">&#10095; pre  </button>
+    
+ -->
+
+<h4 *ngIf="searchArray.length > 0">{{successMessage}}</h4>
+<h4 *ngIf="!searchArray.length">{{wordResult}}</h4>
+<div class="row hide" id="searchResult">
+ 
+    <div class="testi show-on-large hide-on-med-and-up hide-on-small-only hide-on-med-only" style="width:12.5%; height:12.5vw; float:left" *ngFor="let selected of searchArray">
+            <a style="color:black" [routerLink]="['/artists/',selected._id]">{{selected.artistName}}</a>
+            <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{selected.artistImage}}" alt="">
+            <button [ngStyle]="{'display': LoggeduserChecker()}" (click)="removeArtist(selected)">Remove</button>
+    </div>
+</div>
+
+<app-footer></app-footer>
+    
+
+
+
+    
+          

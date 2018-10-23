@@ -1,0 +1,96 @@
+<section>
+<nav class="aliheader hide" role="navigation">
+    <ul clss="right hide-on-med-and-down">
+        <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+        <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+    </ul>
+  </nav>
+
+  <nav class="lime" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="assets/uploads/images/{{site.siteLogo}}" width="100"></a>
+        <ul class="right hide-on-med-and-down hide">
+          <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="/favorites">Musics</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="main/admin">admin</a></li>
+        </ul>
+        <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+      </div>
+    </nav>
+    <ul id="nav-mobile" class="side-nav">
+        <li><a href="#"><i class="material-icons">home</i></a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Musics</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Artists</a></li>
+        <li><a href="#">Contact us</a></li>
+    
+      </ul>
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="teal darken-4" style="margin-top:0;padding:0;width:100% !important; height:100%">
+    <br><br>
+    <h1 class="header center orange-text">{{web[0].siteName}}</h1>
+    <div class="row center" style="overflow: hidden !important;">
+      <h5 class="header col s12 light">{{web[0].siteContent}}</h5>
+
+    </div>
+    
+    <div class="row center">
+      <a href="/artists" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+    </div>
+    <br><br>
+
+  </div>
+</div>
+<!-- <div class="now playing" id="music" style="display:none"> 
+    <span class="bar n1">A</span>
+    <span class="bar n2">B</span>
+    <span class="bar n3">c</span>
+    <span class="bar n4">D</span>
+    <span class="bar n5">E</span>
+    <span class="bar n6">F</span>
+    <span class="bar n7">G</span>
+    <span class="bar n8">H</span>
+    <span class="bar n1">A</span>
+    <span class="bar n1">A</span>
+    <span class="bar n2">B</span>
+    <span class="bar n3">c</span>
+    <span class="bar n4">D</span>
+    <span class="bar n2">B</span>
+    <span class="bar n3">c</span>
+    <span class="bar n4">D</span>
+    <span class="bar n5">E</span>
+    <span class="bar n6">F</span>
+    <span class="bar n7">G</span>
+    <span class="bar n8">H</span> 
+    <span class="bar n3">c</span>
+    <span class="bar n4">D</span>
+    <span class="bar n5">E</span>
+    <span class="bar n6">F</span>
+    <span class="bar n7">G</span>
+    <span class="bar n8">H</span>
+    <span class="bar n5">E</span>
+    <span class="bar n6">F</span>
+    <span class="bar n7">G</span>
+    <span class="bar n8">H</span>
+    <span class="bar n2">B</span>
+  </div> -->
+
+
+
+<!-- <div id="niceSLide">
+<iframe id="trykon" src="/slideShowAnim" frameborder="0" scrolling="no"></iframe>
+</div> -->
+<app-jquery style="position: fixed;"></app-jquery>
+</section>
+<app-footer></app-footer>
+
+
+<!-- <section><</section> -->
+
+
+

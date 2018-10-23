@@ -1,0 +1,240 @@
+
+.section.no-pad-bot .container {
+    width:100% !important;
+    overflow: hidden;
+}
+html {
+    /* background: linear-gradient(135deg, #2B7594 0%, #655900 100%);
+    overflow: hidden; 
+    font-family: 'Orbitron', sans-serif;
+    height:1500px;
+    width:60vw; */
+    font-size:1em !important;
+  }
+  
+  li {
+      list-style-type: none;
+  }
+  
+  .slider-box {
+    float: right;
+    margin: 10px 20px;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  #range {
+    margin-top: 5px;
+    color: #eee;
+    font-size: 10pt;
+    margin-left: 10px;
+    position: relative;
+  }
+  
+  #specks {
+    position: absolute;
+    z-index: 999;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .speck {
+    opacity: 0;
+    height: 4px;
+    width: 4px;
+    background-size: cover;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 99;
+  }
+  
+  .img {
+    position: absolute;
+    height: 100000px;
+    width: 100000px;
+    top: -8500px;
+    left: -8000px;
+    animation-timing-function: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+    animation-name: float;
+    animation-iteration-count: infinite;
+  }
+  
+  #img-1 {
+    opacity: 0.25;
+    background-repeat: repeat;
+    animation-duration: 600s;
+  }
+  
+  #img-2 {
+    opacity: 0.2;
+    background-repeat: repeat;
+    animation-duration: 450s;
+  }
+  
+  #img-3 {
+    opacity: 0.15;
+    background-repeat: repeat;
+    animation-duration: 350s;
+  }
+  /*ANIMATIONS*/
+  
+  @keyframes twinkle {
+    0% {
+      transform: translate(0px, 0px);
+    }
+    30% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.75;
+    }
+    70% {
+      opacity: 0;
+    }
+    100% {
+      transform: translate(175px, 100px);
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translate(0px, 0px);
+    }
+    100% {
+        transform:translate(8000px, 4000px);
+    }
+  }
+
+
+  .playing {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .playing:after {
+    content: "Now Playing.";
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .now.playing .bar {
+    display: inline-block;
+    position: relative;
+    margin-right: 1px;
+    width: 10px;
+    height: 1px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #43a047, #76ff03);
+    color: transparent;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .paused.playing .bar {
+    animation-iteration-count: 1;
+  }
+  .paused.playing:after {
+    content: "Paused (Lame)"
+  }
+  .n1 {
+    animation-delay: 0.5s;
+  }
+  .n2 {
+    animation-delay: 0.2s;
+  }
+  .n3 {
+    animation-delay: 1.2s;
+  }
+  .n4 {
+    animation-delay: 0.9s;
+  }
+  .n5 {
+    animation-delay: 2.3s;
+  }
+  .n6 {
+    animation-delay: 1.3s;
+  }
+  .n7 {
+    animation-delay: 3.1s;
+  }
+  .n8 {
+    animation-delay: 5.9s;
+  }
+  @keyframes pulse {
+    0% {
+      height: 1px;
+      margin-top: 0;
+    }
+    10% {
+      height: 40px;
+      margin-top: -40px;
+    }
+    50% {
+      height: 20px;
+      margin-top: -20px;
+    }
+    60% {
+      height: 30px;
+      margin-top: -30px;
+    }
+    80% {
+      height: 60px;
+      margin-top: -60px;
+    }
+    100% {
+      height: 1px;
+      margin-top: 0;
+    }
+  }
+
+  #trykon {
+   overflow: hidden;
+   width:100vw;
+   height:100vh;
+  }
+
+  /* section {
+    width:100vw;
+    height:100%;
+    overflow: hidden;
+  } */
+
+  #niceSLide {
+    width:100vw;
+    height:100vh;
+    margin-top: -100vh;
+  }
+
+  .section.no-pad-bot {
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    height:auto;
+}
+
+nav.lime,.nav-wrapper.container {
+  height:90px;
+  line-height: 90px;
+  background: rgb(130,206,0); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(130,206,0,1) 0%, rgba(11,8,12,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82ce00', endColorstr='#0b080c',GradientType=0 ); /* IE6-9 */
+}
+.aliheader {
+  height:90px;
+  line-height: 90px;
+  background: rgb(130,206,0); /* Old browsers */
+  background: -moz-linear-gradient(top, rgb(0, 48, 206) 0%, rgba(11,8,12,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(130,206,0,1) 0%,rgba(11,8,12,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 139, 206) 0%,rgba(11,8,12,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82ce00', endColorstr='#0b080c',GradientType=0 ); /* IE6-9 */
+}
+
+.teal {
+  background-color: #0c296f !important;
+}
+
+

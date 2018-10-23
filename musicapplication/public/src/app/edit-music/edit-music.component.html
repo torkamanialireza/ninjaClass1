@@ -1,0 +1,9 @@
+editing
+
+<form (submit)="updateMusic(music)">
+    <p>Music Name: <input type="text" name="music.songName" [(ngModel)]="music.songName"></p>
+    <p>content: <textarea style="height:150px" name="music.content" [(ngModel)]="music.content"></textarea>
+    <p>Music Image: <img src="assets/uploads/images/{{music.musicImage}}" alt="" style="width:100px">
+    <p>Music File: <input  type="text" name="music.songCover" [(ngModel)]="music.songCover"></p>
+    <input type="submit" value="Update and Save changes">
+</form>

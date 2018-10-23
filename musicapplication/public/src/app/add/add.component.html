@@ -1,0 +1,27 @@
+<nav>
+    <div class="nav-wrapper">
+        <div class="col s12">
+        <a href="/artists" class="breadcrumb">Artists</a>
+        <a href="/artists/new" class="breadcrumb">Add New Artist</a>
+        </div>
+    </div>
+</nav>
+
+<form enctype="multipart/form-data" (submit)="addMusicInAddTs()">    
+<p> Artist Name : <input type="text" name="newArtist.artistName" [(ngModel)]="newArtist.artistName"></p>
+<p> Content : <input type="text" name="newArtist.artistContent" [(ngModel)]="newArtist.artistContent"></p>
+<p> Artist Facebook : <input type="text" name="newArtist.artistFacebook" [(ngModel)]="newArtist.artistFacebook"></p>
+<p> Artist Twitter : <input type="text" name="newArtist.artistTwitter" [(ngModel)]="newArtist.artistTwitter"></p>
+<p> Artist Google: <input type="text" name="newArtist.artistGoogle" [(ngModel)]="newArtist.artistGoogle"></p>
+<p> followers : <input type="text" name="newArtist.followers" [(ngModel)]="newArtist.followers"></p>
+<p> Artist Image : <input type="file" name="artistImage" (change)="onFileSelectedMusicImage($event)"></p> 
+<p> Artist Cover : <input type="file" name="artistCover" (change)="onFileSelectedSongCover($event)"></p>    
+<input type="submit" value="Add Music">
+<button [routerLink]="['/artists']">Cancel</button>
+</form>
+<div id="validation" >
+<p *ngFor="let e of errorsValidation">
+    {{e}}
+</p>
+</div> 
+

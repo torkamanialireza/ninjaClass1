@@ -1,0 +1,194 @@
+
+
+ <!-- <nav>
+   <a href="/artists/{{artist._id}}/musics">musics</a>
+    <div class="nav-wrapper">
+        <a href="/artists" class="breadcrumb">Artists</a>
+        <a href="/artists/{{artist._id}}/" class="breadcrumb">{{artist.artistName}}</a>   
+      
+    </div>
+  </nav> -->
+      <!-- <nav class="light-green darken-1">
+          <a href="/artists/{{artist._id}}/" class="breadcrumb">{{artist.artistName}}</a>  
+           
+          <div class="nav-wrapper">       
+            <div class="col s12 navTop">
+                <a href="/artists" class="breadcrumb">Artists</a>
+                <a href="/artists/{{artist._id}}/" class="breadcrumb">{{artist.artistName}}</a>  
+            </div>
+          </div>
+        </nav> -->
+
+        <!-- <nav class="aliheader" role="navigation">
+            <ul clss="right hide-on-med-and-down">
+                <li><a *ngIf="loggedUser" (click)="logout()">Sign out - {{loggedUser.firstName}} {{loggedUser.lastName}} logged in!!!</a>
+                <a *ngIf="!loggedUser" (click)="login()">Sign in</a></li>
+            </ul>
+          </nav>
+          
+          <nav class="lime" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">
+            </a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="#"><i class="material-icons" style="height:100%; line-height: 90px; vertical-align: middle">home</i></a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="/favorites">Musics</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="main/admin">admin</a></li>
+              </ul>
+              <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons" (click)="showMenu()">menu</i></a>
+            </div>
+          </nav>
+          <ul id="nav-mobile" class="side-nav">
+              <li><a href="#"><i class="material-icons">home</i></a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Musics</a></li>
+              <li><a href="#">Videos</a></li>
+              <li><a href="#">Artists</a></li>
+              <li><a href="#">Contact us</a></li>
+          
+            </ul> -->
+
+        <app-navi></app-navi>
+
+        <nav class="light-green darken-1">
+            <div class="nav-wrapper">
+                <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  
+                    <li><a href="/artists/{{artist._id}}/musics" style="float:right" class="breadcrumb">Musics</a></li>
+                    
+                  </ul> -->
+              <div class="col s12">
+                <a href="/artists" class="breadcrumb">Artists</a>
+                <a href="/artists/{{artist._id}}/" class="breadcrumb">{{artist.artistName}}</a>
+                
+                
+              </div>
+            </div>
+          </nav>
+  <div class="row artistbody" [ngStyle]="{'background-image': getFunction(),'background-color': getColor(artist)}">
+     
+    <!-- <h4 style="color:white">{{artist.artistContent}}</h4> -->
+    <h4 style="color:white"> {{artist.followers}} Views</h4>
+    
+    
+    
+  <div class="row" [ngStyle]="{'background-color':'transparent','margin-top':'33vw'}">
+      <!-- <div class="orange col s12 m6 l2" *ngFor="let music of artist.musics" style="color:white">
+          <a style="color:beige" href="artists/{{artist._id}}/musics/{{music._id}}">{{music.songName}}</a>
+          <img id="ali" src="assets/uploads/images/{{music.musicImage}}" alt="music-Cover" style="width:100%; height:12.7vw; object-fit: content">
+
+          <p class="orange" [ngStyle]="{'background-color': getColor(artist) ,'color':'beige'}">
+            {{music.playerCounter}} plays
+          </p>
+         
+      </div> -->
+      <!-- test bid -->
+      <div class="orange show-on-large hide-on-med-and-up hide-on-small-only hide-on-med-only" style="width:12.5%; height:12.5vw; float:left" *ngFor="let song of artist.musics">
+
+          <a href="artists/{{artist._id}}/musics/{{song._id}}"><strong>{{song.songName}}</strong> <span class="black" style="float:right">{{song.playerCounter}} plays</span></a>
+          <img style="width:100%; height: 100%; object-fit: cover" src="assets/uploads/images/{{song.musicImage}}" alt="">
+      </div>
+      <div class="orange hide-on-large-only show-on-small hide-on-med-only" style="width:50%; float:left;height:50vw;" *ngFor="let song of artist.musics">
+      <a style="color:black" href="artists/{{artist._id}}/musics/{{song._id}}">{{song.songName}}</a>
+      <img style="width:100%; height: 100%; object-fit: cover" src="assets/uploads/images/{{song.musicImage}}" alt="">
+     
+    </div>
+    <div class="orange hide-on-small-only show-on-med hide-on-large-only" style="width:25%; float:left;height:25vw;" *ngFor="let song of artist.musics">
+        <a style="color:black" href="artists/{{artist._id}}/musics/{{song._id}}">{{song.songName}}</a>
+        <img style="width:100%; height: 100%; object-fit: cover" src="assets/uploads/images/{{song.musicImage}}" alt="">
+       
+      </div>
+  </div>
+
+</div>
+
+
+
+  <!-- <div [ngStyle]="{'background-color': getColor(artist)}">
+
+
+
+    sdadasdasdas
+  </div> -->
+
+
+<!-- <div id="forblur" class="row">
+
+</div> -->
+
+<!-- <div class="jadidrow" [ngStyle]="{'background-image': getFunction(),'background-size': 'cover'}">
+  
+  <div class="jadid col s12 m6 l12"> -->
+    <!-- <div class="col s12 m6 l12" [ngStyle]="{'overflow':'hidden','width':'275px','height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+      <img src="assets/uploads/images/{{artist.artistImage}}" style="width:100%; height:100%" alt="">
+    </div> -->
+    <!-- vistied: {{counter}} -->
+    
+    <!-- musics: {{artist.musics.length}}
+    videos: {{artist.videos.length}}
+    <div *ngFor="let music of artist.musics" class="col s12 m6 l3">
+      <img src="assets/uploads/images/{{music.musicImage}}" width="100px" height="auto"/>
+      <li><a href="artists/{{artist._id}}/musics/{{music._id}}">information:{{music.content}}</a></li>
+      <li>name: {{music.songName}}</li>
+      <li>followers:{{music.users.length}}</li>
+      <li>created at: {{music.createdAt}}</li>
+    </div> 
+    <div *ngFor="let video of artist.videos" class="col s12 m6 l3">
+        <img src="assets/uploads/images/{{video.videoImage}}" width="100px" height="auto"/>
+        <li>videos:{{video.content}}</li>
+        <li>video: {{video.videoName}}</li>
+        <li>followers of video :{{video.users.length}}</li>
+        <li>created at: {{video.createdAt}}</li>
+    </div>  -->
+    <!-- <div class="row">
+        
+        <div class="row">   
+            
+            <h1 style="font-family: 'Fjalla One', sans-serif; color:white">{{artist.artistName}}</h1> -->
+            <!-- <div class="col s12 m6 l6" [ngStyle]="{'background-size': '100% 100%','background-repeat': 'no-repeat'}">   
+                <img src="assets/uploads/images/{{artist.artistImage}}" style="width:100%; height:100%" alt="">
+ 
+            </div> -->
+            <!-- <div class="col s12 m6 l3" *ngFor="let artist of allArtists" [ngStyle]="{'background-image': getFunction(artist),'height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+              <h5 class="{{artist.musicImage}}" ><a [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a></h5>
+            </div> -->
+        <!-- </div>
+        <div class="row">
+          <h2 class="yellow accent-3"><a href="/artists/{{artist._id}}/musics">Musics</a></h2>
+          <div class="col s12 m6 l4" *ngFor="let music of artist.musics" [ngStyle]="{'background-image': getFunction(music),'height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+
+
+          </div>
+        </div>
+        <div class="row">
+            <h2 class=" yellow accent-3">Videos</h2>
+          </div>
+  </div>
+      
+    
+</div>
+</div> -->
+<!-- {{artist | json}} -->
+<!-- {{artist | json}} -->
+
+
+  <!-- <div class="hide-on-large-only show-on-small hide-on-med-only" style="width:50%; float:left;height:50vw;" *ngFor="let artist of allArtists">
+      <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+      <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+      <button (click)="removeArtist(artist)">Remove</button>
+    </div> -->
+
+
+    <!-- <div class="hide-on-small-only show-on-med hide-on-large-only" style="width:25%; float:left;height:25vw;" *ngFor="let artist of allArtists">
+        <a style="color:black" [routerLink]="['/artists/',artist._id]">{{artist.artistName}}</a>
+        <img style="width:100%; height: 100%; object-fit: cover" src="./assets/uploads/images/{{artist.artistImage}}" alt="">
+        <button (click)="removeArtist(artist)">Remove</button>
+      </div> -->
+
+
+
+
+

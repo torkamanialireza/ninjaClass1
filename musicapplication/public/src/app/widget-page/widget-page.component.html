@@ -1,0 +1,44 @@
+{{allWidgets | json}}
+<div *ngIf="!loggedUser"> 
+  <div class="row lime accent-2">
+      
+    <div class="col s12 m6 l3 red">
+    {{logUser | json}}
+    <h5>Login</h5>
+    <form enctype="multipart/form-data" (submit)="loginUser()">    
+      <p>
+        <input type="text" class="white" name="logUser.email" [(ngModel)]="logUser.email">
+      </p>
+      <p>
+        <input type="text" class="white" name="logUser.password" [(ngModel)]="logUser.password">
+      </p>
+        <input type="submit" value="Login">
+    </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="loggedUser">
+<div class="row">
+{{newWidget |json}}
+  <div class="col s12 m6 l4 lime accent-2" style="margin:0px auto 50px 0px; bottom:0px; float:left">
+    <h5>Widgets</h5>
+    <form enctype="multipart/form-data" (submit)="addWidgetInAddTs()">   
+      <p><label style="width:100%; display: inline-block; color:black; font-family: 'Rubik', sans-serif; " > Widget Title : </label><input type="text" class="white" name="newWidget.title" [(ngModel)]="newWidget.title"></p>
+      <p> <label style="width:100%; display: inline-block; color:black;" > Widget Content : </label><textarea style="height:250px; width:100%; max-width: 90%"  class="white" name="newWidget.content" [(ngModel)]="newWidget.content"></textarea></p>
+      <p> Widget Cover Photo : <input type="file"  name="widgetCover" (change)="onFileSelectedWidgetCover($event)"></p>  
+      <input type="submit" value="Save Changes">
+    </form>
+  </div>
+  <div class="col s12 m6 l6">
+    <h2>All Widgets</h2>
+    <div class="col s12 m6 l12" *ngFor="let widget of allWidgets">
+      <p>{{widget.title}}</p>
+      <p>{{widget.content}}</p>
+      
+    </div>
+
+
+  </div>
+
+</div>
+</div>

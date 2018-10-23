@@ -1,0 +1,14 @@
+
+
+<div class="row">
+<div *ngFor="let artist of artists">
+  <div *ngFor="let song of artist.members"  class="col s12 m6 l3" [ngStyle]="{'background-image': bgFunction(song),'height': '275px','background-size': '100% 100%','background-repeat': 'no-repeat'}">
+  <!-- <div class="col s12 m6 l2 center" *ngFor="let song of archivemusics" [ngStyle]="{'background-image':bgFunction(song),'background-position':center,
+  'background-repeat': no-repeat,'background-size': 'cover'}" load="checkArtist(archivemusics)"> -->
+     <!-- <a style="text-align: center" href="artists/{{artistId}}/musics/{{song._id}}"><img src="assets/uploads/images/{{song.musicImage}}" alt="{{artists[0].artistName}}"></a>  -->
+      <a style="text-align: center" href="artists/{{artist._id}}/musics/{{song._id}}">{{song.songName}}</a>
+  </div>
+
+
+</div>
+</div>

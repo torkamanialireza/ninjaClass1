@@ -1,0 +1,18 @@
+
+<form enctype="multipart/form-data" (submit)="musicToArtist()">    
+<p> Song Name : <input type="text" name="newMusic.songName" [(ngModel)]="newMusic.songName"></p>
+<p> Content : <input type="text" name="newMusic.content" [(ngModel)]="newMusic.content"></p>
+<p> visited : <input type="text" name="newMusic.playerCounter" [(ngModel)]="newMusic.playerCounter"></p>
+<p> followers : <input type="text" name="newMusic.followers" [(ngModel)]="newMusic.followers"></p>
+<p> Music Image : <input type="file" name="musicImage" (change)="onFileSelectedMusicImage($event)"></p>
+ 
+<p> Music Cover : <input type="file" name="songCover" (change)="onFileSelectedSongCover($event)"></p>    
+<input type="submit" value="Add Music">
+<button [routerLink]="['/musics']">Cancel</button>
+</form>
+<div id="validation" >
+<p *ngFor="let e of errorsValidation">
+    {{e}}
+</p>
+</div> 
+

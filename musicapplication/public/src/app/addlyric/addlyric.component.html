@@ -1,0 +1,39 @@
+<div class="row">
+
+  <div class="col s12 m6 l12">
+    <h4>Add new lyric to lyrics of {{music.songName}}</h4>
+
+    lyrics : {{music.content}}
+    <button (click)="fadeInV()">Fade In</button>
+    <button (click)="fadeOutV()">Fade Out</button>
+    <form class="col s12 m6 l12" (submit)="addLyricInLyrics()">
+    <p class="col s12 m6 l12">Content:<textarea class="textLyric" name="newLyric.content" [(ngModel)]="newLyric.content"></textarea></p> 
+    <p class="col s12 m6 l12">FadeIn<input type="text" id="fadeInVerb" name="newLyric.fadeIn"  class="col s12 m6 l4"  value=""></p>
+    <p class="col s12 m6 l12">FadeOut<input type="text" id="fadeOutVerb" name="newLyric.fadeOut" class="col s12 m6 l4"  value=""></p>
+    
+    <p class="col s12 m6 l12"><input type="submit" value="Add Lyric"></p>
+    </form>
+  </div>
+  <div class="col s12 m6 l12">
+    <audio id="audioPlayer" src="assets/uploads/medias/{{music.songCover}}" controls></audio>
+
+    <div class="col s12 m6 l12" *ngFor="let lyric of music.lyrics;let i = index">
+      <h5>lyric-{{i}}</h5>
+      <p>{{lyric.content}}</p>
+      <button (click)="editFunc(i)" class="">Edit of Lyric</button>
+      <button (click)="removeLyric(lyric)">Remove Lyric</button>
+      <div class="s12 m6 l12 edit-{{i}} hide">
+
+        <form class="col s12 m6 l4" action="">
+          <p><input type="text" name="lyric.content" value="{{lyric.content}}"></p> 
+          <p><input type="text" name="lyric.fadeIn" value="{{lyric.fadeIn}}"></p>
+          <p><input type="text" name="lyric.fadeOut" value="{{lyric.fadeOut}}"></p>
+          <p><input type="submit" value="Save Changes"></p>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+  
+</div>

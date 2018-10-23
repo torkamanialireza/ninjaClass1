@@ -1,0 +1,15 @@
+* {
+    margin:0;
+    padding: 0;
+}
+
+#validation {
+    width: 50vw;
+    color: white;
+    margin: 0 25vw;
+    min-height: 20vw;
+    display: inline-block;
+    position: absolute;
+}
+
+

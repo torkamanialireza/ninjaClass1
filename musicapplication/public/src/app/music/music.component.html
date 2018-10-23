@@ -1,0 +1,181 @@
+<nav class="light-green darken-1">
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          
+            <li><a href="/artists/{{artist._id}}/musics/new" style="float:right">Add New Music for Atrist</a></li>
+            
+          </ul>
+      <div class="col s12">
+        <a href="/artists" class="breadcrumb">Artists</a>
+        <a href="/artists/{{artist._id}}/" class="breadcrumb">{{artist.artistName}}</a>
+        <a href="/artists/{{artist._id}}/musics" class="breadcrumb">Musics</a>
+        
+      </div>
+    </div>
+  </nav>
+  <div class="row teal darken-4">
+    <div class="col s12 m6 l3" *ngFor="let music of artist.musics">
+      <div style="width:90%; height:300px; margin:20px 5%"> 
+      <img src="assets/uploads/images/{{music.musicImage}}"  style="width:80%; height:80%;margin:10%" alt="">
+      <a href="/artists/{{artist._id}}/musics/{{music._id}}">{{music.songName}}</a>
+      </div>
+    </div>
+
+  </div>
+<!-- <div class="row">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  Ratione explicabo eum iusto sit esse commodi fuga quaerat pariatur accusamus, 
+  nisi aut incidunt doloribus reiciendis vel vero, 
+  maxime dolore neque delectus.
+
+
+  <div class="col s12 m6 l4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Ratione explicabo eum iusto sit esse commodi fuga quaerat pariatur accusamus, 
+      nisi aut incidunt doloribus reiciendis vel vero, 
+      maxime dolore neque delectus.
+  </div>
+  <div class="col s12 m6 l4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Ratione explicabo eum iusto sit esse commodi fuga quaerat pariatur accusamus, 
+      nisi aut incidunt doloribus reiciendis vel vero, 
+      maxime dolore neque delectus.
+  </div>
+  <div class="col s12 m6 l4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Ratione explicabo eum iusto sit esse commodi fuga quaerat pariatur accusamus, 
+      nisi aut incidunt doloribus reiciendis vel vero, 
+      maxime dolore neque delectus.
+  </div>
+</div> -->
+  <!-- col s12 m6 l12 -->
+<!-- <div class="row" *ngIf="artist"> -->
+  <!-- <table>
+  <thead>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr*ngFor="let music of artist.musics">
+        <td><img src="assets/uploads/images/{{music.musicImage}}" style="width:100px; height:100px"/></td>
+        <td><a href="artists/{{artist._id}}/musics/{{music._id}}">{{music.songName}}</a></td>
+        <td>{{music.playerCounter}}</td>
+        <td><a>{{music.followers}}</a></td>
+        <td><img src="assets/uploads/images/{{music.songCover}}" style="width:100px; height:100px"/></td>
+        
+        <td><button (click)="deleteMusicInMaints(music)">Delete</button></td>
+
+        
+        <td><button (click)="musicFunc(music)">Add favorite</button></td>
+        
+         
+        <td><button (click)="deleteRelation(music)">delete</button></td>
+      </tr>  
+    </tbody> 
+  </table> -->
+  <!-- <div class="row">
+    <div class="col s12 m6 l4">
+      <table>
+        <thead>
+          
+          <tr>
+            
+              
+              
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr *ngFor="let music of artist.musics">
+            <td><img src="assets/uploads/images/{{music.musicImage}}" style="width:100px; height:100px"/></td>
+            <td><a href="artists/{{artist._id}}/musics/{{music._id}}">{{music.songName}}</a></td>
+            <td>{{music.playerCounter}}</td>
+            <td><a>{{music.followers}}</a></td>
+            
+            
+            <td><button (click)="deleteMusicInMaints(music)">Delete</button></td>
+
+            
+            <td><button (click)="musicFunc(music)">Add favorite</button></td>
+            
+              
+            <td><button (click)="deleteRelation(music)">delete</button></td>
+          </tr>   
+        </tbody> 
+      </table>
+    </div> 
+  <div class="col s12 m6 l4">
+    
+      <img src="{{cover}}" style="width:400px; height:400px"/>
+  </div> 
+  <div class="col s12 m6 l4">
+    <p>{{content}}</p>
+    <p>{{numberOfPlay}}</p>
+  </div>  
+</div>  -->
+  
+<!-- 
+<div class="row">
+
+vistied: {{counter}}
+
+</div> -->
+<!-- onended="EndOfAudio()"  -->
+<!-- <audio id="audioPlayer" autoplay
+                    
+                    onplay="Update_Play_Pause()" 
+                    src=""
+                    onended="endofMusic(artist)"
+                    ontimeupdate="myScript()"
+                    ondurationchange="durationBar()"
+                    >
+
+</audio> -->
+
+<!-- <ul id="songSelector">
+    <a *ngFor="let music of artist.musics" href="assets/uploads/medias/{{music.songCover}}"><li>{{music.songCover}}</li></a>
+    
+</ul> -->
+
+<!-- <input id="audioSeekBar" type="range" onchange="audioSeekBar()"> -->
+
+<!-- <button id="mutebtn">Mute</button>
+<input id="volumeslider" type="range" min="0" max="100" value="100" step="1" onvolumechange="setvolume()" style="width:100px">
+<span id="currentTime">0:00</span>
+<input id="testranger" type="range" style="width:60%">
+<span id="restTime">0:00</span>|<span id="totalTime">0:00</span>
+<hr>  
+<button id="mute_unmute" value="Mute" onclick="Mute_Unmute()" style="width:40px;margin-left:50px;"><i style="font-size:40px;" class="fa fa-volume-up" aria-hidden="true"></i></button> 
+<button id="play" style="margin-left:40px;"><i style="font-size:40px;" class="fa fa-play" aria-hidden="true"></i></button>
+<button (click)="preMusic(artist.musics, player.src)"id="next" style="margin-left:50px;"><i style="font-size:40px;" class="fa fa-arrow-left" aria-hidden="true"></i></button>
+<button id="pause" style="margin-left:50px;"><i style="font-size:40px;" class="fa fa-pause" aria-hidden="true"></i></button>
+<button id="restart" style="margin-left:50px;"><i style="font-size:40px;" class="fa fa-redo" aria-hidden="true"></i></button>
+<button (click)="nextMusic(artist.musics, player.src)" id="next" style="margin-left:50px;"><i style="font-size:40px;" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+<hr>
+
+<div class="row2">
+    <canvas id="canvas" width="1600" height="350"></canvas>
+</div> -->
+<!-- <app-jquery></app-jquery> -->
+
+<!-- <div> 
+    <button id="btn-loop"><i style="font-size: 40px;" class="fa fa-repeat" aria-hidden="true"></i></button>
+</div> -->
+
+
+
+
+
+
+    <!-- <button style="width: 19%;height:auto;font-size: 40px;background: transparent;border: none;" id="btn-loop"><i style="font-size: 40px;" class="fa fa-repeat" aria-hidden="true"></i></button> -->
+    
+    
+  
+  <!-- <button style="width: 19%;color:black;height:auto;font-size: 40px;background: transparent;border: none;"><a href="http://springatlan.com/?project=number3" rel="prev"><i style="color:rgba(0, 0, 0, .8);" class="fa fa-step-backward" aria-hidden="true"></i></a></button> -->
+  <!-- <button id="nextt" style="width: 19%;color:black;height:auto;font-size: 40px;background: transparent;border: none;"><i style="color:rgba(0, 0, 0, .8);" class="fa fa-step-forward" aria-hidden="true"></i></button> -->
+  
